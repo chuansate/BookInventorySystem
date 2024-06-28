@@ -5,6 +5,7 @@
     <title>Learning Vue</title>
     <script src="https://unpkg.com/vue@3.0.2"></script>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <h1 id="title">Book Inventory System</h1>
@@ -12,7 +13,18 @@
         <div v-if="showBooks"> 
             <table>
                 <tr><th>Book Title</th> <th>Author</th> <th>Price</th> <th>Actions</th></tr>
-                <tr v-for="book in books"><td>{{book.title}}</td> <td>{{book.author}}</td> <td>{{book.price}}</td> <td><button v-on:click="editBookInfo()" @mouseover="mouseoverEdit()" @mouseover="mouseleaveEdit" class="edit">Edit</button> <button v-on:click="deleteBook(book.title)" class="delete">Delete</button></td></tr>
+                <tr v-for="book in books" v-bind:class="{ fav: book.isFav }">
+                    <td><img v-bind:src="book.img" v-bind:alt="book.title"><br>{{book.title}}</td> 
+                    <td>{{book.author}}</td> <td>{{book.price}}</td> 
+                    <td>
+                        <button v-on:click="editBookInfo()" @mouseover="mouseoverEdit()" @mouseover="mouseleaveEdit" class="edit">Edit</button> 
+                        <button v-on:click="deleteBook(book.title)" class="delete">Delete</button> 
+                        <button @click="toggleSaveBook(book)" style="margin-left: 10px;">
+                            <span v-if="book.isFav"><i class="material-icons" style="font-size:36px;color:red">favorite</i></span>
+                            <span v-else><i class="material-icons" style="font-size:36px;">favorite</i></span>
+                        </button>
+                    </td>
+                </tr>
             </table>
             <button v-on:click="increasePriceBy1()">Increase Price</button>
             <button v-on:click="decreasePriceBy1()">Decrease Price</button>

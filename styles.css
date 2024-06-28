@@ -1,20 +1,25 @@
 table, th, td {
     border: 1px solid white;
     border-collapse: collapse;
-    
+    color: white;
+    text-align: center;
+    font-size: 20px;
 }
 
 table {
-    width: 100%;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 th {
     background-color: #b393d3;
 }
 
-td {
+tr {
     background-color: #96D4D4;
 }
+
 
 #title {
     text-align: center;
@@ -28,6 +33,9 @@ td {
 .edit {
     border-color: #00e673;
     background-color: #00e673;
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
 }
 
 .edit:hover {
@@ -37,8 +45,15 @@ td {
 .delete {
     border-color: #ff3300;
     background-color: #ff3300;
+    color: white;
+    margin-left: 10px;
+    font-size: 20px;
 }
 
 .delete:hover {
     background-color: #ff8080;
+}
+
+.fav {
+    background-color: #d84e8e;
 }
