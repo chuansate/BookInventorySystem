@@ -1,0 +1,30 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learning Vue</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1 id="title">Book Inventory System</h1>
+    <div id="firstPart">
+        <div v-if="showBooks"> 
+            <table>
+                <tr><th>Book Title</th> <th>Author</th> <th>Price</th> <th>Actions</th></tr>
+                <tr v-for="book in books"><td>{{book.title}}</td> <td>{{book.author}}</td> <td>{{book.price}}</td> <td><button v-on:click="editBookInfo()" @mouseover="mouseoverEdit()" @mouseover="mouseleaveEdit" class="edit">Edit</button> <button v-on:click="deleteBook(book.title)" class="delete">Delete</button></td></tr>
+            </table>
+            <button v-on:click="increasePriceBy1()">Increase Price</button>
+            <button v-on:click="decreasePriceBy1()">Decrease Price</button>
+        </div>
+        <br>
+        <br>
+        <button @click="toggleShowBooks">
+            <span v-if="showBooks">Hide Books</span>
+            <span v-else>Show Books</span>
+        </button>
+    </div>
+    <script src="app.js"></script>
+
+</body>
+</html>
